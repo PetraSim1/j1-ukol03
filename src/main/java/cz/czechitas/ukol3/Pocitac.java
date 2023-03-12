@@ -9,6 +9,7 @@ public class Pocitac {
     private Pamet ram;
     private Disk disk;
 
+
     public boolean isJeZapnuty() {
         return jeZapnuty;
     }
@@ -33,7 +34,7 @@ public class Pocitac {
     public void vypniSe() {
         if (jeZapnuty) {
             jeZapnuty = false;
-            System.out.println ("Počítač se vypnul.");
+            System.out.println("Počítač se vypnul.");
         }
     }
 
@@ -61,8 +62,37 @@ public class Pocitac {
         this.disk = disk;
     }
 
+    public void vytvorSouborOVelikosti (long velikost) {
+        if (jeZapnuty) {
+            if (disk.getVyuziteMisto() + velikost > disk.getKapacita()) {
+                System.err.println("Soubor je příliš velký.");
+            } else {
+                disk.setVyuziteMisto(disk.getVyuziteMisto() + velikost);
+                System.out.println("Vytvořen soubor o velikosti: " + velikost + " b.");
+            }
+        }
+        else {
+            System.err.println("Počítač není zapnutý.");
+        }
+    }
+
+    public void vymazSouborOVelikosti (long velikost) {
+        if (jeZapnuty) {
+            if (disk.getVyuziteMisto() - velikost < 0) {
+                System.err.println("Soubor nelze smazat.");
+            } else {
+                disk.setVyuziteMisto(disk.getVyuziteMisto() - velikost);
+                System.out.println("Smazán soubor o velikosti: " + velikost + " b.");
+            }
+        }
+        else {
+            System.err.println("Počítač není zapnutý.");
+        }
+    }
+
     @Override
     public String toString() {
         return "Počítač: " + cpu + ram + disk;
     }
 }
+

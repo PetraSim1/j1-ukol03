@@ -23,8 +23,24 @@ public class HlavniProgram {
         mujPocitac.setCpu(mujProcesor);
 
         mujPocitac.zapniSe();
-        System.out.println(mujPocitac);
+
+        System.out.println(mujDisk);
+
+        mujPocitac.vytvorSouborOVelikosti(500_000_000_100L);
+        System.out.println(mujDisk);
+
+        mujPocitac.vytvorSouborOVelikosti(100L);
+        System.out.println(mujDisk);
+
+        mujPocitac.vymazSouborOVelikosti(50L);
+        System.out.println(mujDisk);
+
+        mujPocitac.vymazSouborOVelikosti(500_000_000_500L);
+        System.out.println(mujDisk);
+
         mujPocitac.vypniSe();
+
+        mujPocitac.vytvorSouborOVelikosti(100L);
 
     }
 }
